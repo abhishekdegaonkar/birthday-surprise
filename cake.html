@@ -1,234 +1,53 @@
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday Cake 🎂</title>
 
-body{
+<link rel="stylesheet" href="cake.css">
 
-font-family:'Poppins',sans-serif;
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
-height:100vh;
+</head>
 
-display:flex;
+<body>
 
-justify-content:center;
+<div class="background"></div>
 
-align-items:center;
+<div class="container">
 
-overflow:hidden;
+<h1>🎂 Happy Birthday Rasika ❤️</h1>
 
-background:linear-gradient(135deg,#ff5fa2,#9b5cff,#4f46e5);
+<p>Make a wish and blow out the candles ✨</p>
 
-color:white;
+<div class="cake">
 
-text-align:center;
+<div class="candles">
 
-}
+<div class="candle"><div class="flame"></div></div>
+<div class="candle"><div class="flame"></div></div>
+<div class="candle"><div class="flame"></div></div>
+<div class="candle"><div class="flame"></div></div>
+<div class="candle"><div class="flame"></div></div>
 
-.background{
+</div>
 
-position:fixed;
+<div class="layer top"></div>
+<div class="layer middle"></div>
+<div class="layer bottom"></div>
 
-width:100%;
+</div>
 
-height:100%;
+<button id="blowBtn">
+💨 Blow the Candles
+</button>
 
-background:
-radial-gradient(circle at top,#ffffff22 2px,transparent 3px);
+<div id="message"></div>
 
-background-size:40px 40px;
+</div>
 
-animation:bgMove 15s linear infinite;
+<script src="cake.js"></script>
 
-}
-
-@keyframes bgMove{
-
-from{
-
-transform:translateY(0);
-
-}
-
-to{
-
-transform:translateY(-200px);
-
-}
-
-}
-
-.container{
-
-width:90%;
-
-max-width:420px;
-
-z-index:2;
-
-}
-
-h1{
-
-font-size:42px;
-
-margin-bottom:10px;
-
-}
-
-p{
-
-margin-bottom:35px;
-
-font-size:17px;
-
-}
-
-.cake{
-
-position:relative;
-
-width:230px;
-
-margin:auto;
-
-}
-
-.candles{
-
-display:flex;
-
-justify-content:space-evenly;
-
-margin-bottom:8px;
-
-}
-
-.candle{
-
-width:12px;
-
-height:45px;
-
-background:white;
-
-border-radius:5px;
-
-position:relative;
-
-}
-
-.flame{
-
-position:absolute;
-
-top:-18px;
-
-left:-1px;
-
-width:14px;
-
-height:20px;
-
-background:gold;
-
-border-radius:50% 50% 50% 50%;
-
-box-shadow:0 0 15px orange;
-
-animation:flicker .15s infinite alternate;
-
-}
-
-@keyframes flicker{
-
-from{
-
-transform:scale(1);
-
-}
-
-to{
-
-transform:scale(.8);
-
-}
-
-}
-
-.layer{
-
-border-radius:15px;
-
-margin:auto;
-
-margin-bottom:6px;
-
-}
-
-.top{
-
-width:150px;
-
-height:50px;
-
-background:#ffeaa7;
-
-}
-
-.middle{
-
-width:190px;
-
-height:55px;
-
-background:#ff7675;
-
-}
-
-.bottom{
-
-width:230px;
-
-height:60px;
-
-background:#fd79a8;
-
-}
-
-button{
-
-margin-top:35px;
-
-padding:16px 35px;
-
-border:none;
-
-border-radius:40px;
-
-font-size:18px;
-
-cursor:pointer;
-
-font-weight:bold;
-
-background:linear-gradient(45deg,#ff4fa0,#ff9f43);
-
-color:white;
-
-box-shadow:0 10px 30px rgba(255,0,120,.4);
-
-}
-
-#message{
-
-margin-top:25px;
-
-font-size:24px;
-
-font-weight:bold;
-
-color:#fff;
-
-}
+</body>
+</html>
