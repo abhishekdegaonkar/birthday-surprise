@@ -1,3 +1,7 @@
+/* ==========================
+   CELEBRATION PAGE V2.0
+========================== */
+
 *{
 margin:0;
 padding:0;
@@ -5,78 +9,141 @@ box-sizing:border-box;
 }
 
 body{
-
 font-family:'Poppins',sans-serif;
-
 height:100vh;
-
 display:flex;
-
 justify-content:center;
-
 align-items:center;
-
 overflow:hidden;
-
-background:linear-gradient(-45deg,#ff4fa0,#9b5cff,#5b5fff,#ffd369);
-
+background:linear-gradient(-45deg,#ff4f9d,#8b5cf6,#3b82f6,#ffd166);
 background-size:400% 400%;
-
-animation:bgMove 12s infinite;
-
+animation:bgMove 15s ease infinite;
+color:#fff;
 text-align:center;
-
-color:white;
-
 }
 
 @keyframes bgMove{
-
 0%{background-position:0% 50%;}
-
 50%{background-position:100% 50%;}
-
 100%{background-position:0% 50%;}
+}
+
+/* Background */
+
+.background{
+position:fixed;
+inset:0;
+background-image:radial-gradient(white 1px,transparent 2px);
+background-size:40px 40px;
+opacity:.2;
+animation:stars 25s linear infinite;
+z-index:-3;
+}
+
+@keyframes stars{
+from{transform:translateY(0);}
+to{transform:translateY(-250px);}
+}
+
+/* Fireworks */
+
+#fireworks{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-2;
+}
+
+/* Balloons */
+
+.balloons{
+position:absolute;
+bottom:-100px;
+left:0;
+width:100%;
+font-size:55px;
+animation:balloons 12s linear infinite;
+opacity:.9;
+}
+
+@keyframes balloons{
+
+0%{
+transform:translateY(0);
+}
+
+100%{
+transform:translateY(-130vh);
+}
 
 }
+
+/* Card */
 
 .container{
 
 width:90%;
+max-width:430px;
 
-max-width:420px;
+padding:30px;
 
-padding:35px;
+background:rgba(255,255,255,.12);
 
-background:rgba(255,255,255,.15);
-
-backdrop-filter:blur(18px);
+backdrop-filter:blur(20px);
 
 border-radius:30px;
 
-border:1px solid rgba(255,255,255,.3);
+border:1px solid rgba(255,255,255,.2);
 
-box-shadow:0 20px 60px rgba(0,0,0,.25);
+box-shadow:0 20px 60px rgba(0,0,0,.3);
+
+animation:fade .8s;
+
+}
+
+@keyframes fade{
+
+from{
+
+opacity:0;
+
+transform:translateY(40px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
 
 }
 
 h2{
 
-font-size:20px;
+font-size:26px;
 
-margin-bottom:15px;
+margin-bottom:10px;
+
+color:#FFD700;
 
 }
 
 h1{
 
-font-size:55px;
-
 font-family:'Dancing Script',cursive;
 
-margin-bottom:25px;
+font-size:58px;
 
-text-shadow:0 0 20px gold;
+margin-bottom:20px;
+
+text-shadow:
+0 0 15px #fff,
+0 0 35px hotpink;
 
 animation:glow 2s infinite alternate;
 
@@ -92,7 +159,7 @@ transform:scale(1);
 
 to{
 
-transform:scale(1.08);
+transform:scale(1.05);
 
 }
 
@@ -100,11 +167,11 @@ transform:scale(1.08);
 
 p{
 
+font-size:17px;
+
 line-height:30px;
 
 margin-bottom:35px;
-
-font-size:16px;
 
 }
 
@@ -112,17 +179,17 @@ button{
 
 width:100%;
 
-padding:18px;
+padding:16px;
+
+font-size:17px;
+
+font-weight:bold;
 
 border:none;
 
 border-radius:50px;
 
-font-size:18px;
-
 cursor:pointer;
-
-font-weight:600;
 
 background:linear-gradient(45deg,#ff4fa0,#ff9f43);
 
@@ -130,45 +197,47 @@ color:white;
 
 transition:.3s;
 
+box-shadow:0 12px 30px rgba(255,0,120,.4);
+
 }
 
 button:hover{
 
-transform:scale(1.03);
+transform:scale(1.04);
 
 }
 
 /* Floating Hearts */
 
-.hearts::before{
+body::before{
 
-content:"❤️ 💖 💕 💗 ❤️ 💖 💞";
+content:"❤️ 💖 💕 💗 💞 ❤️";
 
 position:absolute;
 
 width:100%;
 
+top:-80px;
+
 left:0;
 
-top:-50px;
+font-size:30px;
 
-font-size:28px;
+opacity:.25;
 
-opacity:.18;
-
-animation:heartMove 12s linear infinite;
+animation:heartRain 12s linear infinite;
 
 }
 
-@keyframes heartMove{
+@keyframes heartRain{
 
-from{
+0%{
 
 transform:translateY(0);
 
 }
 
-to{
+100%{
 
 transform:translateY(120vh);
 
@@ -180,7 +249,13 @@ transform:translateY(120vh);
 
 h1{
 
-font-size:45px;
+font-size:46px;
+
+}
+
+.container{
+
+padding:25px;
 
 }
 
