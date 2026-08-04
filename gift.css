@@ -1,3 +1,7 @@
+/* ===========================================
+   Premium Birthday Gallery
+=========================================== */
+
 *{
 margin:0;
 padding:0;
@@ -6,135 +10,232 @@ box-sizing:border-box;
 
 body{
 
-font-family:Poppins,sans-serif;
+font-family:'Poppins',sans-serif;
 
-height:100vh;
+background:linear-gradient(-45deg,#ff5fa2,#9b5cff,#6c63ff,#ffd369);
 
-display:flex;
+background-size:400% 400%;
 
-justify-content:center;
+animation:bgMove 15s ease infinite;
 
-align-items:center;
+min-height:100vh;
 
-background:linear-gradient(135deg,#ff5fa2,#8b5cf6,#4f46e5);
-
-overflow:hidden;
+overflow-x:hidden;
 
 }
 
-.container{
+@keyframes bgMove{
 
-text-align:center;
+0%{background-position:0% 50%;}
 
-color:white;
+50%{background-position:100% 50%;}
 
-}
-
-h2{
-
-font-size:32px;
-
-margin-bottom:15px;
+100%{background-position:0% 50%;}
 
 }
 
-p{
+/* Floating Background */
 
-font-size:18px;
+.background{
 
-margin-top:10px;
-
-}
-
-.gift-box{
-
-font-size:120px;
-
-cursor:pointer;
-
-margin:35px auto;
-
-animation:bounce 2s infinite;
-
-transition:.5s;
-
-}
-
-.gift-box:hover{
-
-transform:scale(1.15);
-
-}
-
-@keyframes bounce{
-
-0%,100%{
-transform:translateY(0);
-}
-
-50%{
-transform:translateY(-20px);
-}
-
-}
-
-.open{
-
-animation:explode .8s forwards;
-
-}
-
-@keyframes explode{
-
-0%{
-
-transform:scale(1);
-
-}
-
-50%{
-
-transform:scale(1.4) rotate(15deg);
-
-}
-
-100%{
-
-transform:scale(0);
-
-opacity:0;
-
-}
-
-}
-
-.stars{
-
-position:absolute;
+position:fixed;
 
 width:100%;
 
 height:100%;
 
-background-image:
-radial-gradient(white 2px,transparent 2px);
+top:0;
 
-background-size:60px 60px;
+left:0;
 
-opacity:.3;
-
-animation:moveStars 20s linear infinite;
+z-index:-2;
 
 }
 
-@keyframes moveStars{
+.overlay{
 
-from{
-transform:translateY(0);
+position:fixed;
+
+width:100%;
+
+height:100%;
+
+background:rgba(255,255,255,.05);
+
+backdrop-filter:blur(8px);
+
+z-index:-1;
+
 }
 
-to{
-transform:translateY(-300px);
+/* Heading */
+
+header{
+
+text-align:center;
+
+padding:35px 20px;
+
+color:white;
+
+}
+
+header h1{
+
+font-size:34px;
+
+font-family:'Dancing Script',cursive;
+
+margin-bottom:10px;
+
+text-shadow:0 0 20px gold;
+
+}
+
+header p{
+
+font-size:16px;
+
+opacity:.9;
+
+}
+
+/* Gallery */
+
+.gallery{
+
+width:92%;
+
+max-width:1000px;
+
+margin:auto;
+
+display:grid;
+
+grid-template-columns:repeat(2,1fr);
+
+gap:18px;
+
+padding-bottom:120px;
+
+}
+
+/* Glass Card */
+
+.card{
+
+background:rgba(255,255,255,.15);
+
+backdrop-filter:blur(15px);
+
+border:1px solid rgba(255,255,255,.3);
+
+border-radius:22px;
+
+overflow:hidden;
+
+box-shadow:0 12px 30px rgba(0,0,0,.25);
+
+transition:.4s;
+
+}
+
+.card:hover{
+
+transform:translateY(-8px) scale(1.03);
+
+}
+
+.card img{
+
+width:100%;
+
+height:250px;
+
+object-fit:cover;
+
+display:block;
+
+transition:.5s;
+
+}
+
+.card:hover img{
+
+transform:scale(1.08);
+
+}
+
+/* Button */
+
+.button-area{
+
+position:fixed;
+
+bottom:20px;
+
+left:50%;
+
+transform:translateX(-50%);
+
+width:90%;
+
+max-width:360px;
+
+}
+
+button{
+
+width:100%;
+
+padding:18px;
+
+font-size:18px;
+
+font-weight:600;
+
+border:none;
+
+border-radius:50px;
+
+cursor:pointer;
+
+color:white;
+
+background:linear-gradient(45deg,#ff4fa0,#ff9f43);
+
+box-shadow:0 15px 35px rgba(255,0,150,.35);
+
+transition:.3s;
+
+}
+
+button:hover{
+
+transform:scale(1.03);
+
+}
+
+/* Mobile */
+
+@media(max-width:600px){
+
+.gallery{
+
+grid-template-columns:1fr;
+
+}
+
+.card img{
+
+height:320px;
+
+}
+
+header h1{
+
+font-size:30px;
+
 }
 
 }
