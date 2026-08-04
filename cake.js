@@ -1,79 +1,80 @@
-const btn=document.getElementById("blowBtn");
+const button = document.getElementById("blowBtn");
+const flames = document.querySelectorAll(".flame");
+const message = document.getElementById("message");
 
-const flames=document.querySelectorAll(".flame");
+button.addEventListener("click", () => {
 
-const msg=document.getElementById("message");
+    // Blow out candles
+    flames.forEach((flame, index) => {
+        setTimeout(() => {
+            flame.style.transition = "0.5s";
+            flame.style.transform = "scale(0)";
+            flame.style.opacity = "0";
+        }, index * 250);
+    });
 
-btn.onclick=()=>{
+    button.disabled = true;
+    button.innerHTML = "🎉 Wish Made";
 
-flames.forEach(f=>{
+    // Show Birthday Message
+    setTimeout(() => {
+        message.innerHTML = `
+        🎂 Happy Birthday Rasika ❤️<br>
+        May your smile always shine brighter than the stars ✨<br><br>
+        💖 Wishing you endless happiness, love and success 💖
+        `;
+        createHearts();
+    }, 1700);
 
-f.style.opacity="0";
+    // Go to Letter Page
+    setTimeout(() => {
+        window.location.href = "letter.html";
+    }, 7000);
 
 });
 
-btn.style.display="none";
+// Floating Hearts
+function createHearts() {
 
-msg.innerHTML="🎉 Happy 21st Birthday Rasika ❤️<br><br>May all your dreams come true! ✨";
+    for (let i = 0; i < 35; i++) {
 
-createConfetti();
+        const heart = document.createElement("div");
 
-setTimeout(()=>{
+        heart.innerHTML = "❤️";
 
-window.location.href="letter.html";
+        heart.style.position = "fixed";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.bottom = "-30px";
+        heart.style.fontSize = (18 + Math.random() * 25) + "px";
+        heart.style.opacity = Math.random();
+        heart.style.pointerEvents = "none";
+        heart.style.animation = `floatHeart ${4 + Math.random() * 3}s linear forwards`;
 
-},5000);
+        document.body.appendChild(heart);
 
-};
-
-function createConfetti(){
-
-for(let i=0;i<120;i++){
-
-let c=document.createElement("div");
-
-c.style.position="fixed";
-
-c.style.width="8px";
-
-c.style.height="8px";
-
-c.style.left=Math.random()*100+"vw";
-
-c.style.top="-20px";
-
-c.style.background=`hsl(${Math.random()*360},100%,60%)`;
-
-c.style.borderRadius="50%";
-
-c.style.zIndex="999";
-
-document.body.appendChild(c);
-
-let speed=3+Math.random()*5;
-
-let rotate=Math.random()*360;
-
-let y=-20;
-
-const fall=setInterval(()=>{
-
-y+=speed;
-
-c.style.top=y+"px";
-
-c.style.transform=`rotate(${rotate+=5}deg)`;
-
-if(y>window.innerHeight){
-
-clearInterval(fall);
-
-c.remove();
-
+        setTimeout(() => {
+            heart.remove();
+        }, 7000);
+    }
 }
 
-},20);
+// Heart Animation
+const style = document.createElement("style");
 
+style.innerHTML = `
+@keyframes floatHeart{
+0%{
+transform:translateY(0) scale(.5);
+opacity:0;
 }
+20%{
+opacity:1;
+}
+100%{
+transform:translateY(-110vh) scale(1.5) rotate(360deg);
+opacity:0;
+}
+}
+`;
 
-}
+document.head.appendChild(style);
