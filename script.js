@@ -1,6 +1,6 @@
-// ===============================
-// Birthday Website Login
-// ===============================
+// ================================
+// Birthday Surprise Login
+// ================================
 
 const dobInput = document.getElementById("dob");
 const passwordInput = document.getElementById("password");
@@ -12,10 +12,10 @@ const correctDOB = "2005-08-14";
 const correctPassword = "14082005";
 
 // Unlock Button
-unlockBtn.addEventListener("click", () => {
+unlockBtn.addEventListener("click", function () {
 
-    const dob = dobInput.value;
-    const password = passwordInput.value;
+    const dob = dobInput.value.trim();
+    const password = passwordInput.value.trim();
 
     // Empty Fields
     if (dob === "" || password === "") {
@@ -23,52 +23,52 @@ unlockBtn.addEventListener("click", () => {
         message.style.color = "#FFD700";
         message.innerHTML = "⚠️ Please enter your birth date and password.";
 
-        shakeCard();
+        shake();
 
         return;
+
     }
 
     // Correct Details
     if (dob === correctDOB && password === correctPassword) {
 
         message.style.color = "#7CFC00";
-        message.innerHTML = "✨ Identity Verified...";
-
-        unlockBtn.innerHTML = "Loading Surprise... 💖";
+        message.innerHTML = "✨ Welcome Rasika... Your surprise is loading ❤️";
 
         unlockBtn.disabled = true;
+        unlockBtn.innerHTML = "Loading...";
 
-        setTimeout(() => {
+        setTimeout(function(){
 
             window.location.href = "gift.html";
 
-        }, 2500);
+        },2000);
 
     }
 
     // Wrong Details
-    else {
+    else{
 
-        message.style.color = "#ff4b5c";
+        message.style.color = "#ff4d6d";
         message.innerHTML = "❌ Wrong Birth Date or Password";
 
-        shakeCard();
+        shake();
 
     }
 
 });
 
 // Shake Animation
-function shakeCard() {
+function shake(){
 
-    const card = document.querySelector(".login-card");
+    const card = document.querySelector(".glass");
 
     card.style.animation = "none";
 
-    setTimeout(() => {
+    setTimeout(function(){
 
         card.style.animation = "shake .4s";
 
-    }, 10);
+    },10);
 
 }
