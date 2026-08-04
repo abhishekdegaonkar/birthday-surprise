@@ -1,38 +1,36 @@
-/* =========================================
-   Premium Gift Page
-========================================= */
-
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
 body{
 
-    font-family:'Poppins',sans-serif;
+font-family:'Poppins',sans-serif;
 
-    height:100vh;
+height:100vh;
 
-    display:flex;
+display:flex;
 
-    justify-content:center;
+justify-content:center;
 
-    align-items:center;
+align-items:center;
 
-    overflow:hidden;
+overflow:hidden;
 
-    background:linear-gradient(-45deg,#ff5fa2,#b86bff,#6c63ff,#ffd369);
+background:linear-gradient(-45deg,#ff4f9d,#9b5cff,#5b7fff,#ffd166);
 
-    background-size:400% 400%;
+background-size:400% 400%;
 
-    animation:bgMove 15s ease infinite;
+animation:bg 15s ease infinite;
+
+color:white;
+
+text-align:center;
 
 }
 
-/* Animated Background */
-
-@keyframes bgMove{
+@keyframes bg{
 
 0%{background-position:0% 50%;}
 
@@ -42,29 +40,26 @@ body{
 
 }
 
-/* Stars */
+.background{
 
-.stars{
-
-position:absolute;
+position:fixed;
 
 width:100%;
 
 height:100%;
 
 background-image:
+radial-gradient(white 1px,transparent 2px);
 
-radial-gradient(white 2px,transparent 2px);
-
-background-size:60px 60px;
+background-size:40px 40px;
 
 opacity:.25;
 
-animation:moveStars 20s linear infinite;
+animation:stars 20s linear infinite;
 
 }
 
-@keyframes moveStars{
+@keyframes stars{
 
 from{
 
@@ -74,45 +69,51 @@ transform:translateY(0);
 
 to{
 
-transform:translateY(-300px);
+transform:translateY(-200px);
 
 }
 
 }
-
-/* Container */
 
 .container{
 
-text-align:center;
+width:90%;
 
-color:white;
+max-width:420px;
 
-z-index:5;
+padding:30px;
 
-padding:20px;
+background:rgba(255,255,255,.12);
+
+backdrop-filter:blur(20px);
+
+border-radius:30px;
+
+border:1px solid rgba(255,255,255,.2);
+
+box-shadow:0 20px 50px rgba(0,0,0,.25);
 
 }
 
-.container h1{
+h1{
 
 font-size:34px;
 
-margin-bottom:15px;
+margin-bottom:10px;
 
 }
 
-.container p{
+p{
 
-font-size:17px;
+margin-bottom:40px;
 
-margin-bottom:35px;
+font-size:16px;
 
 }
 
-/* Gift Box */
+/* Gift */
 
-.gift-box{
+#giftBox{
 
 position:relative;
 
@@ -124,15 +125,11 @@ margin:auto;
 
 cursor:pointer;
 
-transition:.4s;
-
-animation:float 2.5s ease-in-out infinite;
+animation:bounce 2s infinite;
 
 }
 
-/* Floating */
-
-@keyframes float{
+@keyframes bounce{
 
 0%,100%{
 
@@ -148,8 +145,6 @@ transform:translateY(-12px);
 
 }
 
-/* Box */
-
 .box{
 
 position:absolute;
@@ -160,15 +155,13 @@ width:180px;
 
 height:120px;
 
-background:#ff4fa0;
+background:#ff4f9d;
 
-border-radius:0 0 15px 15px;
+border-radius:0 0 12px 12px;
 
-box-shadow:0 15px 35px rgba(0,0,0,.3);
+box-shadow:0 15px 30px rgba(0,0,0,.25);
 
 }
-
-/* Lid */
 
 .lid{
 
@@ -178,21 +171,19 @@ top:30px;
 
 width:180px;
 
-height:40px;
+height:35px;
 
-background:#ff6fb5;
+background:#ff70b3;
 
-border-radius:10px;
+border-radius:8px;
 
-transition:.7s;
+transition:.8s;
 
 transform-origin:left center;
 
 }
 
-/* Ribbon */
-
-.ribbon.vertical{
+.ribbon-v{
 
 position:absolute;
 
@@ -202,69 +193,99 @@ width:16px;
 
 height:180px;
 
-background:white;
+background:#ffd700;
 
 }
 
-.ribbon.horizontal{
+.ribbon-h{
 
 position:absolute;
 
-top:82px;
+top:70px;
 
 width:180px;
 
 height:16px;
 
-background:white;
+background:#ffd700;
 
 }
 
-/* Glow */
+#tapText{
 
-.gift-box::after{
+margin-top:35px;
 
-content:"";
+font-size:24px;
 
-position:absolute;
-
-left:50%;
-
-top:50%;
-
-transform:translate(-50%,-50%);
-
-width:220px;
-
-height:220px;
-
-border-radius:50%;
-
-background:rgba(255,255,255,.12);
-
-filter:blur(35px);
-
-animation:glow 2s infinite;
+animation:pulse 1.5s infinite;
 
 }
 
-@keyframes glow{
+@keyframes pulse{
 
 0%{
 
-opacity:.3;
+transform:scale(1);
 
 }
 
 50%{
 
-opacity:.8;
+transform:scale(1.08);
 
 }
 
 100%{
 
-opacity:.3;
+transform:scale(1);
+
+}
+
+}
+
+/* Sparkles */
+
+.sparkles::before{
+
+content:"✨ ✨ ⭐ ✨ ⭐ ✨";
+
+position:absolute;
+
+width:100%;
+
+top:10%;
+
+left:0;
+
+font-size:28px;
+
+opacity:.7;
+
+animation:shine 4s linear infinite;
+
+}
+
+@keyframes shine{
+
+0%{
+
+transform:translateY(0);
+
+opacity:.2;
+
+}
+
+50%{
+
+opacity:1;
+
+}
+
+100%{
+
+transform:translateY(25px);
+
+opacity:.2;
 
 }
 
@@ -274,11 +295,7 @@ opacity:.3;
 
 .open .lid{
 
-transform:
-
-rotate(-40deg)
-
-translate(-20px,-40px);
+transform:rotate(-130deg) translateY(-20px);
 
 }
 
@@ -286,43 +303,49 @@ translate(-20px,-40px);
 
 transform:scale(1.08);
 
-}
-
-/* Tap Text */
-
-.tap{
-
-margin-top:30px;
-
-font-weight:bold;
-
-animation:blink 1.5s infinite;
+transition:.8s;
 
 }
-
-@keyframes blink{
-
-50%{
-
-opacity:.3;
-
-}
-
-}
-
-/* Mobile */
 
 @media(max-width:480px){
 
-.gift-box{
+h1{
 
-transform:scale(.9);
+font-size:30px;
 
 }
 
-.container h1{
+#giftBox{
 
-font-size:28px;
+width:160px;
+
+height:160px;
+
+}
+
+.box{
+
+width:160px;
+
+height:110px;
+
+}
+
+.lid{
+
+width:160px;
+
+}
+
+.ribbon-h{
+
+width:160px;
+
+}
+
+.ribbon-v{
+
+left:72px;
 
 }
 
