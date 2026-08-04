@@ -1,6 +1,6 @@
-/* ==========================================
-   Birthday Website - style.css
-   ========================================== */
+/* =====================================
+   Birthday Surprise - Premium Login
+===================================== */
 
 *{
     margin:0;
@@ -9,76 +9,123 @@
 }
 
 body{
+
     font-family:'Poppins',sans-serif;
-    width:100%;
+
     height:100vh;
+
     overflow:hidden;
 
     display:flex;
+
     justify-content:center;
+
     align-items:center;
 
-    background:linear-gradient(-45deg,#ff5fa2,#b86bff,#6c63ff,#ffd369);
+    background:linear-gradient(-45deg,#ff5fa2,#b86bff,#7b61ff,#ffd369);
+
     background-size:400% 400%;
+
     animation:bgMove 12s ease infinite;
+
 }
 
 /* Animated Background */
 
 @keyframes bgMove{
 
-0%{
-background-position:0% 50%;
+0%{background-position:0% 50%;}
+
+50%{background-position:100% 50%;}
+
+100%{background-position:0% 50%;}
+
 }
 
-50%{
-background-position:100% 50%;
+/* Floating Hearts */
+
+body::before{
+
+content:"❤️ ❤️ 💖 💕 💗 ❤️ 💖";
+
+position:absolute;
+
+top:-50px;
+
+left:0;
+
+width:100%;
+
+font-size:25px;
+
+opacity:.25;
+
+animation:hearts 12s linear infinite;
+
+}
+
+@keyframes hearts{
+
+0%{
+
+transform:translateY(0);
+
 }
 
 100%{
-background-position:0% 50%;
+
+transform:translateY(120vh);
+
 }
 
 }
 
 /* Glass Card */
 
-.login-card{
+.glass{
 
 width:90%;
-max-width:360px;
+
+max-width:370px;
 
 padding:35px 25px;
 
-border-radius:30px;
-
 background:rgba(255,255,255,.18);
 
+border:1px solid rgba(255,255,255,.35);
+
 backdrop-filter:blur(18px);
+
 -webkit-backdrop-filter:blur(18px);
 
-border:1px solid rgba(255,255,255,.3);
-
-box-shadow:0 20px 60px rgba(0,0,0,.25);
+border-radius:28px;
 
 text-align:center;
 
-animation:fadeIn 1s ease;
+box-shadow:0 20px 60px rgba(0,0,0,.25);
+
+animation:fade .8s ease;
 
 }
 
 /* Fade */
 
-@keyframes fadeIn{
+@keyframes fade{
 
 from{
+
 opacity:0;
+
 transform:translateY(40px);
+
 }
 
 to{
+
 opacity:1;
+
 transform:translateY(0);
+
 }
 
 }
@@ -87,7 +134,7 @@ transform:translateY(0);
 
 .gift{
 
-font-size:65px;
+font-size:70px;
 
 margin-bottom:15px;
 
@@ -98,20 +145,26 @@ animation:bounce 2s infinite;
 @keyframes bounce{
 
 0%,100%{
+
 transform:translateY(0);
+
 }
 
 50%{
-transform:translateY(-10px);
+
+transform:translateY(-12px);
+
 }
 
 }
+
+/* Heading */
 
 h1{
 
-color:white;
+font-size:32px;
 
-font-size:30px;
+color:white;
 
 margin-bottom:10px;
 
@@ -121,13 +174,13 @@ p{
 
 color:white;
 
-font-size:15px;
+line-height:26px;
 
-line-height:24px;
-
-margin-bottom:20px;
+margin-bottom:22px;
 
 }
+
+/* Inputs */
 
 input{
 
@@ -141,11 +194,11 @@ border:none;
 
 outline:none;
 
-border-radius:16px;
-
-background:rgba(255,255,255,.85);
+border-radius:15px;
 
 font-size:16px;
+
+background:rgba(255,255,255,.9);
 
 transition:.3s;
 
@@ -153,11 +206,13 @@ transition:.3s;
 
 input:focus{
 
-transform:scale(1.02);
+transform:scale(1.03);
 
-box-shadow:0 0 20px rgba(255,255,255,.8);
+box-shadow:0 0 15px white;
 
 }
+
+/* Button */
 
 button{
 
@@ -167,7 +222,7 @@ padding:16px;
 
 border:none;
 
-border-radius:18px;
+border-radius:16px;
 
 font-size:17px;
 
@@ -179,7 +234,7 @@ color:white;
 
 background:linear-gradient(45deg,#ff4fa0,#ff8f6b);
 
-transition:.3s;
+transition:.35s;
 
 }
 
@@ -187,47 +242,19 @@ button:hover{
 
 transform:translateY(-3px);
 
-box-shadow:0 15px 35px rgba(255,0,120,.35);
+box-shadow:0 15px 35px rgba(255,0,120,.4);
 
 }
+
+/* Message */
 
 #message{
 
-margin-top:15px;
+margin-top:18px;
 
-font-weight:bold;
+font-weight:600;
 
 min-height:24px;
-
-}
-
-/* Shake Animation */
-
-@keyframes shake{
-
-0%{
-transform:translateX(0);
-}
-
-20%{
-transform:translateX(-8px);
-}
-
-40%{
-transform:translateX(8px);
-}
-
-60%{
-transform:translateX(-8px);
-}
-
-80%{
-transform:translateX(8px);
-}
-
-100%{
-transform:translateX(0);
-}
 
 }
 
@@ -235,23 +262,17 @@ transform:translateX(0);
 
 @media(max-width:480px){
 
-.login-card{
+.glass{
 
 width:92%;
+
 padding:30px 20px;
 
 }
 
 h1{
 
-font-size:27px;
-
-}
-
-input,
-button{
-
-font-size:15px;
+font-size:28px;
 
 }
 
