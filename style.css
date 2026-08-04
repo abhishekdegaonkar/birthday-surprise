@@ -1,4 +1,7 @@
-/* Google Font */
+/* ==========================================
+   Birthday Website - style.css
+   ========================================== */
+
 *{
     margin:0;
     padding:0;
@@ -7,8 +10,9 @@
 
 body{
     font-family:'Poppins',sans-serif;
-    overflow:hidden;
+    width:100%;
     height:100vh;
+    overflow:hidden;
 
     display:flex;
     justify-content:center;
@@ -16,7 +20,6 @@ body{
 
     background:linear-gradient(-45deg,#ff5fa2,#b86bff,#6c63ff,#ffd369);
     background-size:400% 400%;
-
     animation:bgMove 12s ease infinite;
 }
 
@@ -24,11 +27,17 @@ body{
 
 @keyframes bgMove{
 
-0%{background-position:0% 50%;}
+0%{
+background-position:0% 50%;
+}
 
-50%{background-position:100% 50%;}
+50%{
+background-position:100% 50%;
+}
 
-100%{background-position:0% 50%;}
+100%{
+background-position:0% 50%;
+}
 
 }
 
@@ -46,37 +55,30 @@ border-radius:30px;
 background:rgba(255,255,255,.18);
 
 backdrop-filter:blur(18px);
-
 -webkit-backdrop-filter:blur(18px);
 
-border:1px solid rgba(255,255,255,.35);
+border:1px solid rgba(255,255,255,.3);
 
 box-shadow:0 20px 60px rgba(0,0,0,.25);
 
 text-align:center;
 
-animation:fade 1.2s ease;
+animation:fadeIn 1s ease;
 
 }
 
-/* Fade Animation */
+/* Fade */
 
-@keyframes fade{
+@keyframes fadeIn{
 
 from{
-
 opacity:0;
-
 transform:translateY(40px);
-
 }
 
 to{
-
 opacity:1;
-
 transform:translateY(0);
-
 }
 
 }
@@ -87,33 +89,29 @@ transform:translateY(0);
 
 font-size:65px;
 
-animation:bounce 2s infinite;
-
 margin-bottom:15px;
+
+animation:bounce 2s infinite;
 
 }
 
 @keyframes bounce{
 
 0%,100%{
-
 transform:translateY(0);
-
 }
 
 50%{
-
 transform:translateY(-10px);
-
 }
 
 }
 
 h1{
 
-font-size:30px;
-
 color:white;
+
+font-size:30px;
 
 margin-bottom:10px;
 
@@ -125,13 +123,11 @@ color:white;
 
 font-size:15px;
 
-margin-bottom:25px;
-
 line-height:24px;
 
-}
+margin-bottom:20px;
 
-/* Inputs */
+}
 
 input{
 
@@ -145,11 +141,11 @@ border:none;
 
 outline:none;
 
-border-radius:15px;
+border-radius:16px;
+
+background:rgba(255,255,255,.85);
 
 font-size:16px;
-
-background:rgba(255,255,255,.75);
 
 transition:.3s;
 
@@ -157,13 +153,11 @@ transition:.3s;
 
 input:focus{
 
-transform:scale(1.03);
+transform:scale(1.02);
 
-box-shadow:0 0 15px white;
+box-shadow:0 0 20px rgba(255,255,255,.8);
 
 }
-
-/* Button */
 
 button{
 
@@ -181,9 +175,9 @@ font-weight:600;
 
 cursor:pointer;
 
-background:linear-gradient(45deg,#ff4fa0,#ff8f6b);
-
 color:white;
+
+background:linear-gradient(45deg,#ff4fa0,#ff8f6b);
 
 transition:.3s;
 
@@ -193,19 +187,47 @@ button:hover{
 
 transform:translateY(-3px);
 
-box-shadow:0 12px 30px rgba(255,80,150,.45);
+box-shadow:0 15px 35px rgba(255,0,120,.35);
 
 }
 
-/* Message */
-
 #message{
 
-margin-top:18px;
+margin-top:15px;
 
-font-weight:600;
+font-weight:bold;
 
-min-height:25px;
+min-height:24px;
+
+}
+
+/* Shake Animation */
+
+@keyframes shake{
+
+0%{
+transform:translateX(0);
+}
+
+20%{
+transform:translateX(-8px);
+}
+
+40%{
+transform:translateX(8px);
+}
+
+60%{
+transform:translateX(-8px);
+}
+
+80%{
+transform:translateX(8px);
+}
+
+100%{
+transform:translateX(0);
+}
 
 }
 
@@ -215,13 +237,21 @@ min-height:25px;
 
 .login-card{
 
-padding:30px 22px;
+width:92%;
+padding:30px 20px;
 
 }
 
 h1{
 
 font-size:27px;
+
+}
+
+input,
+button{
+
+font-size:15px;
 
 }
 
