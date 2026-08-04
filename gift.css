@@ -1,28 +1,36 @@
-/* ===========================================
-   Premium Birthday Gallery
-=========================================== */
+/* =========================================
+   Premium Gift Page
+========================================= */
 
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
 body{
 
-font-family:'Poppins',sans-serif;
+    font-family:'Poppins',sans-serif;
 
-background:linear-gradient(-45deg,#ff5fa2,#9b5cff,#6c63ff,#ffd369);
+    height:100vh;
 
-background-size:400% 400%;
+    display:flex;
 
-animation:bgMove 15s ease infinite;
+    justify-content:center;
 
-min-height:100vh;
+    align-items:center;
 
-overflow-x:hidden;
+    overflow:hidden;
+
+    background:linear-gradient(-45deg,#ff5fa2,#b86bff,#6c63ff,#ffd369);
+
+    background-size:400% 400%;
+
+    animation:bgMove 15s ease infinite;
 
 }
+
+/* Animated Background */
 
 @keyframes bgMove{
 
@@ -34,207 +42,287 @@ overflow-x:hidden;
 
 }
 
-/* Floating Background */
+/* Stars */
 
-.background{
+.stars{
 
-position:fixed;
-
-width:100%;
-
-height:100%;
-
-top:0;
-
-left:0;
-
-z-index:-2;
-
-}
-
-.overlay{
-
-position:fixed;
+position:absolute;
 
 width:100%;
 
 height:100%;
 
-background:rgba(255,255,255,.05);
+background-image:
 
-backdrop-filter:blur(8px);
+radial-gradient(white 2px,transparent 2px);
 
-z-index:-1;
+background-size:60px 60px;
+
+opacity:.25;
+
+animation:moveStars 20s linear infinite;
 
 }
 
-/* Heading */
+@keyframes moveStars{
 
-header{
+from{
+
+transform:translateY(0);
+
+}
+
+to{
+
+transform:translateY(-300px);
+
+}
+
+}
+
+/* Container */
+
+.container{
 
 text-align:center;
 
-padding:35px 20px;
-
 color:white;
+
+z-index:5;
+
+padding:20px;
 
 }
 
-header h1{
+.container h1{
 
 font-size:34px;
 
-font-family:'Dancing Script',cursive;
-
-margin-bottom:10px;
-
-text-shadow:0 0 20px gold;
+margin-bottom:15px;
 
 }
 
-header p{
+.container p{
 
-font-size:16px;
+font-size:17px;
 
-opacity:.9;
+margin-bottom:35px;
 
 }
 
-/* Gallery */
+/* Gift Box */
 
-.gallery{
+.gift-box{
 
-width:92%;
+position:relative;
 
-max-width:1000px;
+width:180px;
+
+height:180px;
 
 margin:auto;
 
-display:grid;
-
-grid-template-columns:repeat(2,1fr);
-
-gap:18px;
-
-padding-bottom:120px;
-
-}
-
-/* Glass Card */
-
-.card{
-
-background:rgba(255,255,255,.15);
-
-backdrop-filter:blur(15px);
-
-border:1px solid rgba(255,255,255,.3);
-
-border-radius:22px;
-
-overflow:hidden;
-
-box-shadow:0 12px 30px rgba(0,0,0,.25);
+cursor:pointer;
 
 transition:.4s;
 
-}
-
-.card:hover{
-
-transform:translateY(-8px) scale(1.03);
+animation:float 2.5s ease-in-out infinite;
 
 }
 
-.card img{
+/* Floating */
 
-width:100%;
+@keyframes float{
 
-height:250px;
+0%,100%{
 
-object-fit:cover;
-
-display:block;
-
-transition:.5s;
+transform:translateY(0);
 
 }
 
-.card:hover img{
+50%{
+
+transform:translateY(-12px);
+
+}
+
+}
+
+/* Box */
+
+.box{
+
+position:absolute;
+
+bottom:0;
+
+width:180px;
+
+height:120px;
+
+background:#ff4fa0;
+
+border-radius:0 0 15px 15px;
+
+box-shadow:0 15px 35px rgba(0,0,0,.3);
+
+}
+
+/* Lid */
+
+.lid{
+
+position:absolute;
+
+top:30px;
+
+width:180px;
+
+height:40px;
+
+background:#ff6fb5;
+
+border-radius:10px;
+
+transition:.7s;
+
+transform-origin:left center;
+
+}
+
+/* Ribbon */
+
+.ribbon.vertical{
+
+position:absolute;
+
+left:82px;
+
+width:16px;
+
+height:180px;
+
+background:white;
+
+}
+
+.ribbon.horizontal{
+
+position:absolute;
+
+top:82px;
+
+width:180px;
+
+height:16px;
+
+background:white;
+
+}
+
+/* Glow */
+
+.gift-box::after{
+
+content:"";
+
+position:absolute;
+
+left:50%;
+
+top:50%;
+
+transform:translate(-50%,-50%);
+
+width:220px;
+
+height:220px;
+
+border-radius:50%;
+
+background:rgba(255,255,255,.12);
+
+filter:blur(35px);
+
+animation:glow 2s infinite;
+
+}
+
+@keyframes glow{
+
+0%{
+
+opacity:.3;
+
+}
+
+50%{
+
+opacity:.8;
+
+}
+
+100%{
+
+opacity:.3;
+
+}
+
+}
+
+/* Open Animation */
+
+.open .lid{
+
+transform:
+
+rotate(-40deg)
+
+translate(-20px,-40px);
+
+}
+
+.open{
 
 transform:scale(1.08);
 
 }
 
-/* Button */
+/* Tap Text */
 
-.button-area{
+.tap{
 
-position:fixed;
+margin-top:30px;
 
-bottom:20px;
+font-weight:bold;
 
-left:50%;
-
-transform:translateX(-50%);
-
-width:90%;
-
-max-width:360px;
+animation:blink 1.5s infinite;
 
 }
 
-button{
+@keyframes blink{
 
-width:100%;
+50%{
 
-padding:18px;
-
-font-size:18px;
-
-font-weight:600;
-
-border:none;
-
-border-radius:50px;
-
-cursor:pointer;
-
-color:white;
-
-background:linear-gradient(45deg,#ff4fa0,#ff9f43);
-
-box-shadow:0 15px 35px rgba(255,0,150,.35);
-
-transition:.3s;
+opacity:.3;
 
 }
-
-button:hover{
-
-transform:scale(1.03);
 
 }
 
 /* Mobile */
 
-@media(max-width:600px){
+@media(max-width:480px){
 
-.gallery{
+.gift-box{
 
-grid-template-columns:1fr;
-
-}
-
-.card img{
-
-height:320px;
+transform:scale(.9);
 
 }
 
-header h1{
+.container h1{
 
-font-size:30px;
+font-size:28px;
 
 }
 
