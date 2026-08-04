@@ -1,4 +1,4 @@
-const photos = [
+const photos=[
 
 "assets/images/rashika1.jpg",
 "assets/images/rashika2.jpg",
@@ -14,46 +14,94 @@ const photos = [
 
 ];
 
-const captions = [
+const captions=[
 
-"A smile that lights up every moment ❤️",
-"Beautiful inside and out ✨",
-"Happiness looks perfect on you 🌸",
-"Every journey becomes special with you 💕",
-"Your innocence is your biggest strength 🌼",
-"The world is brighter because of your smile ☀️",
-"A heart full of kindness ❤️",
-"Cherishing every memory together 📸",
-"Keep smiling forever 🌹",
-"Your happiness means everything 🎈",
-"Happy Birthday Rasika ❤️🎂"
+"Every smile of yours is precious ❤️",
+
+"You make everyone feel like family 💖",
+
+"Kindness is your biggest beauty 🌸",
+
+"Your innocent smile is unforgettable ✨",
+
+"Every journey with you becomes beautiful 🚗",
+
+"Keep smiling forever 😊",
+
+"A heart full of love ❤️",
+
+"You make memories special 📸",
+
+"Always shine like a star ⭐",
+
+"Stay the amazing person you are 🌹",
+
+"Happy 21st Birthday Rasika 🎂❤️"
 
 ];
 
-let current = 0;
+let current=0;
 
-const img = document.getElementById("storyImage");
-const cap = document.getElementById("caption");
-const title = document.getElementById("title");
+const image=document.getElementById("storyImage");
+const caption=document.getElementById("caption");
+const progress=document.querySelector(".progress-bar");
 
-document.getElementById("next").addEventListener("click", () => {
+function loadStory(){
 
-    current++;
+image.style.opacity=0;
 
-    if (current < photos.length) {
+setTimeout(()=>{
 
-        img.style.opacity = "0";
+image.src=photos[current];
+caption.innerHTML=captions[current];
 
-        setTimeout(() => {
-            img.src = photos[current];
-            cap.innerHTML = captions[current];
-            img.style.opacity = "1";
-        }, 400);
+image.style.opacity=1;
 
-    } else {
+progress.style.width=((current+1)/photos.length)*100+"%";
 
-        window.location.href = "cake.html";
+},300);
 
-    }
+}
 
-}); 
+document.getElementById("right").onclick=()=>{
+
+current++;
+
+if(current>=photos.length){
+
+window.location.href="cake.html";
+return;
+
+}
+
+loadStory();
+
+}
+
+document.getElementById("left").onclick=()=>{
+
+if(current>0){
+
+current--;
+
+loadStory();
+
+}
+
+}
+
+setInterval(()=>{
+
+current++;
+
+if(current>=photos.length){
+
+window.location.href="cake.html";
+
+}else{
+
+loadStory();
+
+}
+
+},5000);
