@@ -1,107 +1,181 @@
-const photos=[
+// ================================
+// PREMIUM GALLERY V4
+// ================================
 
-"assets/images/rashika1.jpg",
-"assets/images/rashika2.jpg",
-"assets/images/rashika3.jpg",
-"assets/images/rashika4.jpg",
-"assets/images/rashika6.jpg",
-"assets/images/rashika7.jpg",
-"assets/images/rashika8.jpg",
-"assets/images/rashika9.jpg",
-"assets/images/rashika10.jpg",
-"assets/images/rashika11.jpg",
-"assets/images/rashika12.jpg"
+const images = [
+"assets/images/rasika1.jpg",
+"assets/images/rasika2.jpg",
+"assets/images/rasika3.jpg",
+"assets/images/rasika4.jpg",
+"assets/images/rasika6.jpg",
+"assets/images/rasika7.jpg",
+"assets/images/rasika8.jpg",
+"assets/images/rasika9.jpg",
+"assets/images/rasika10.jpg",
+"assets/images/rasika11.jpg",
+"assets/images/rasika12.jpg"
+];
+
+const captions = [
+
+"Every smile of yours makes the world brighter ❤️",
+
+"You are the most beautiful gift life has ever created ✨",
+
+"Some memories stay forever... this is one of them 💖",
+
+"Your happiness is the reason behind this surprise 🎉",
+
+"Beautiful outside... even more beautiful inside 🌸",
+
+"Every picture reminds me how special you are ❤️",
+
+"Keep smiling because your smile is magical ✨",
+
+"You deserve all the happiness in the world 🎂",
+
+"May every dream come true for you 💕",
+
+"Happy Birthday to the most precious person ❤️",
+
+"This is only the beginning of your beautiful journey 🎉"
 
 ];
 
-const captions=[
+let current = 0;
 
-"Every smile of yours is precious ❤️",
+const img = document.getElementById("storyImage");
+const caption = document.getElementById("caption");
+const counter = document.getElementById("counter");
+const progress = document.getElementById("progress");
+const heart = document.getElementById("heart");
 
-"You make everyone feel like family 💖",
+function showImage(){
 
-"Kindness is your biggest beauty 🌸",
-
-"Your innocent smile is unforgettable ✨",
-
-"Every journey with you becomes beautiful 🚗",
-
-"Keep smiling forever 😊",
-
-"A heart full of love ❤️",
-
-"You make memories special 📸",
-
-"Always shine like a star ⭐",
-
-"Stay the amazing person you are 🌹",
-
-"Happy 21st Birthday Rasika 🎂❤️"
-
-];
-
-let current=0;
-
-const image=document.getElementById("storyImage");
-const caption=document.getElementById("caption");
-const progress=document.querySelector(".progress-bar");
-
-function loadStory(){
-
-image.style.opacity=0;
+img.classList.add("fade");
 
 setTimeout(()=>{
 
-image.src=photos[current];
-caption.innerHTML=captions[current];
+img.src = images[current];
 
-image.style.opacity=1;
+caption.innerHTML = captions[current];
 
-progress.style.width=((current+1)/photos.length)*100+"%";
+counter.innerHTML = (current+1)+" / "+images.length;
 
-},300);
+img.classList.remove("fade");
+
+resetProgress();
+
+},250);
 
 }
 
-document.getElementById("right").onclick=()=>{
+function nextImage(){
 
 current++;
 
-if(current>=photos.length){
+if(current>=images.length){
 
 window.location.href="cake.html";
+
 return;
 
 }
 
-loadStory();
+showImage();
 
 }
 
-document.getElementById("left").onclick=()=>{
+function prevImage(){
 
-if(current>0){
+if(current===0) return;
 
 current--;
 
-loadStory();
+showImage();
 
 }
+
+document.getElementById("next").onclick=nextImage;
+
+document.getElementById("prev").onclick=prevImage;
+
+/* Double Tap Heart */
+
+let lastTap=0;
+
+document.body.addEventListener("touchend",function(e){
+
+const now=new Date().getTime();
+
+if(now-lastTap<300){
+
+heart.classList.add("showHeart");
+
+setTimeout(()=>{
+
+heart.classList.remove("showHeart");
+
+},800);
+
+}
+
+lastTap=now;
+
+});
+
+/* Progress Bar */
+
+let width=0;
+
+function resetProgress(){
+
+width=0;
+
+progress.style.width="0%";
 
 }
 
 setInterval(()=>{
 
-current++;
+width+=2;
 
-if(current>=photos.length){
+progress.style.width=width+"%";
 
-window.location.href="cake.html";
+if(width>=100){
 
-}else{
-
-loadStory();
+nextImage();
 
 }
 
-},5000);
+},100);
+
+/* Swipe Support */
+
+let startX=0;
+
+document.addEventListener("touchstart",e=>{
+
+startX=e.touches[0].clientX;
+
+});
+
+document.addEventListener("touchend",e=>{
+
+let endX=e.changedTouches[0].clientX;
+
+if(startX-endX>60){
+
+nextImage();
+
+}
+
+if(endX-startX>60){
+
+prevImage();
+
+}
+
+});
+
+showImage();
