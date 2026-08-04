@@ -1,7 +1,3 @@
-/* ===========================
-   PREMIUM GIFT PAGE V2.0
-=========================== */
-
 *{
 margin:0;
 padding:0;
@@ -15,12 +11,15 @@ display:flex;
 justify-content:center;
 align-items:center;
 overflow:hidden;
-background:linear-gradient(-45deg,#ff4f9d,#8b5cf6,#4f7cff,#ffd166);
+background:linear-gradient(-45deg,#ff4d94,#8b5cf6,#4f7cff,#ffd166);
 background-size:400% 400%;
 animation:bgMove 15s ease infinite;
-color:#fff;
+color:white;
 text-align:center;
+position:relative;
 }
+
+/* Animated Background */
 
 @keyframes bgMove{
 0%{background-position:0% 50%;}
@@ -28,39 +27,44 @@ text-align:center;
 100%{background-position:0% 50%;}
 }
 
-/* Background Stars */
+/* Stars */
 
-.background{
+.stars{
 position:fixed;
-inset:0;
-background-image:radial-gradient(white 1px,transparent 2px);
+width:100%;
+height:100%;
+background-image:
+radial-gradient(white 1px,transparent 2px);
 background-size:40px 40px;
 opacity:.25;
-animation:stars 20s linear infinite;
-z-index:-2;
+animation:starMove 20s linear infinite;
 }
 
-@keyframes stars{
-from{transform:translateY(0);}
-to{transform:translateY(-220px);}
+@keyframes starMove{
+from{
+transform:translateY(0);
+}
+to{
+transform:translateY(-250px);
+}
 }
 
 /* Glass Card */
 
 .container{
-width:90%;
+width:92%;
 max-width:420px;
-padding:30px;
+padding:35px 25px;
+border-radius:30px;
 background:rgba(255,255,255,.12);
 backdrop-filter:blur(18px);
--webkit-backdrop-filter:blur(18px);
-border-radius:30px;
 border:1px solid rgba(255,255,255,.2);
-box-shadow:0 20px 60px rgba(0,0,0,.25);
-animation:fade .8s ease;
+box-shadow:0 20px 50px rgba(0,0,0,.25);
+z-index:10;
+animation:fadeIn 1s ease;
 }
 
-@keyframes fade{
+@keyframes fadeIn{
 from{
 opacity:0;
 transform:translateY(40px);
@@ -72,19 +76,18 @@ transform:translateY(0);
 }
 
 h1{
-font-size:34px;
-margin-bottom:12px;
+font-size:32px;
+margin-bottom:10px;
 }
 
 p{
 font-size:16px;
-margin-bottom:35px;
 line-height:28px;
+margin-bottom:35px;
+opacity:.95;
 }
 
-/* ===================
-   GIFT BOX
-=================== */
+/* Gift Box */
 
 #giftBox{
 position:relative;
@@ -92,46 +95,40 @@ width:180px;
 height:180px;
 margin:auto;
 cursor:pointer;
+animation:floatGift 2.5s ease-in-out infinite;
 transition:.8s;
-animation:bounce 2s infinite;
 }
 
-@keyframes bounce{
+@keyframes floatGift{
 0%,100%{
 transform:translateY(0);
 }
 50%{
-transform:translateY(-10px);
+transform:translateY(-12px);
 }
 }
-
-/* Box */
 
 .box{
 position:absolute;
 bottom:0;
 width:180px;
 height:120px;
-background:linear-gradient(#ff5ea8,#ff2d75);
+background:linear-gradient(#ff4f9d,#ff1f75);
 border-radius:0 0 18px 18px;
-box-shadow:0 20px 35px rgba(0,0,0,.3);
+box-shadow:0 15px 30px rgba(0,0,0,.25);
 }
-
-/* Lid */
 
 .lid{
 position:absolute;
 top:30px;
 width:180px;
 height:35px;
-background:#ff7db9;
+background:#ff74b8;
 border-radius:10px;
 transition:1s;
 transform-origin:left center;
 box-shadow:0 8px 15px rgba(0,0,0,.25);
 }
-
-/* Ribbons */
 
 .ribbon-v{
 position:absolute;
@@ -149,22 +146,45 @@ height:16px;
 background:#FFD700;
 }
 
-/* Open Animation */
-
-.open{
-transform:scale(1.08);
-}
+/* Open Gift */
 
 .open .lid{
 transform:rotate(-130deg) translate(-20px,-25px);
 }
 
-/* Text */
+.open{
+transform:scale(1.08);
+filter:drop-shadow(0 0 35px gold);
+}
+
+/* Sparkles */
+
+.sparkles::before{
+content:"✨ ✨ ⭐ ✨ ⭐ ✨";
+position:absolute;
+width:100%;
+left:0;
+top:-50px;
+font-size:28px;
+animation:sparkle 2s infinite;
+}
+
+@keyframes sparkle{
+0%,100%{
+opacity:.3;
+transform:translateY(0);
+}
+50%{
+opacity:1;
+transform:translateY(-10px);
+}
+}
+
+/* Tap Text */
 
 #tapText{
 margin-top:35px;
 font-size:24px;
-font-weight:700;
 animation:pulse 1.5s infinite;
 }
 
@@ -177,30 +197,27 @@ transform:scale(1.08);
 }
 }
 
-/* Sparkles */
+/* Hearts */
 
-.sparkles::before{
-content:"✨ ⭐ ✨ ⭐ ✨ ⭐ ✨";
-position:absolute;
-width:100%;
-top:10%;
-left:0;
-font-size:30px;
-animation:sparkle 4s linear infinite;
-opacity:.8;
+.heart{
+position:fixed;
+bottom:-40px;
+pointer-events:none;
+animation:heartFloat 7s linear forwards;
+z-index:999;
 }
 
-@keyframes sparkle{
+@keyframes heartFloat{
 0%{
-transform:translateY(0);
-opacity:.2;
+transform:translateY(0) scale(.5);
+opacity:0;
 }
-50%{
+20%{
 opacity:1;
 }
 100%{
-transform:translateY(20px);
-opacity:.2;
+transform:translateY(-120vh) scale(1.5);
+opacity:0;
 }
 }
 
@@ -226,40 +243,14 @@ opacity:0;
 }
 }
 
-/* Hearts */
-
-.heart{
-position:fixed;
-bottom:-30px;
-pointer-events:none;
-animation:heartFloat 7s linear forwards;
-z-index:998;
-}
-
-@keyframes heartFloat{
-0%{
-transform:translateY(0) scale(.5);
-opacity:0;
-}
-20%{
-opacity:1;
-}
-100%{
-transform:translateY(-120vh) scale(1.6);
-opacity:0;
-}
-}
-
-/* Mobile */
-
 @media(max-width:480px){
 
 .container{
-padding:25px 18px;
+padding:30px 20px;
 }
 
 h1{
-font-size:30px;
+font-size:28px;
 }
 
 #giftBox{
@@ -282,10 +273,6 @@ width:160px;
 
 .ribbon-v{
 left:72px;
-}
-
-#tapText{
-font-size:22px;
 }
 
 }
