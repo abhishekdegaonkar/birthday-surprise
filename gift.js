@@ -1,4 +1,4 @@
-const gift=document.getElementById("giftBox");
+const gift = document.getElementById("giftBox");
 
 gift.addEventListener("click",()=>{
 
@@ -8,6 +8,6 @@ setTimeout(()=>{
 
 window.location.href="celebration.html";
 
-},1200);
+},1800);
 
 });
