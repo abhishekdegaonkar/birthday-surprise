@@ -1,125 +1,64 @@
-// ===========================
-// LOVE LETTER V4
-// ===========================
+const message=`Dear Rasika ❤️,
 
-const letter = `
+Happy Birthday!
 
-Dear Rasika ❤️,
+Today is one of the most special days because it celebrates someone truly wonderful.
 
-Happy Birthday to the most beautiful soul.
+May this birthday bring you endless happiness, beautiful memories, good health, success, peace and lots of smiles.
 
-Today is not just another day...
-It is the day when someone truly special came into this world.
+Keep believing in yourself because you are capable of achieving every dream you have.
 
-I hope your life is always filled with happiness,
-beautiful memories,
-endless smiles,
-and countless blessings.
+Whenever life becomes difficult, remember that every challenge makes you stronger.
 
-May every dream you see become reality.
+Always keep your beautiful smile because it has the power to brighten someone's entire day.
 
-May every step you take lead you toward success.
+May God always protect you, guide you and bless you with unlimited happiness.
 
-Whenever life becomes difficult,
-always remember that you are stronger than every challenge.
+Thank you for being such an amazing person.
 
-Keep smiling...
-because your smile has the power to make everything beautiful.
+Enjoy every moment of today.
 
-Thank you for being the wonderful person you are.
+Once again,
 
-May this birthday be the beginning of the happiest chapter of your life.
+Happy Birthday Rasika ❤️🎂✨`;
 
-Once again...
+const typing=document.getElementById("typing");
+const btn=document.getElementById("nextBtn");
 
-🎂 Happy Birthday Rasika ❤️
+let i=0;
 
-Wishing you endless happiness,
-good health,
-success,
-peace,
-and lots of love.
+function typeLetter(){
 
-Never stop smiling.
+if(i<message.length){
 
-✨❤️✨
+typing.innerHTML+=message.charAt(i);
 
-`;
+i++;
 
-const typing = document.getElementById("typing");
+window.scrollTo({
 
-let i = 0;
+top:document.body.scrollHeight,
 
-function typeWriter(){
+behavior:"smooth"
 
-    if(i < letter.length){
+});
 
-        typing.innerHTML += letter.charAt(i);
-
-        i++;
-
-        setTimeout(typeWriter,35);
-
-    }
+setTimeout(typeLetter,28);
 
 }
 
-typeWriter();
+else{
 
-/* --------------------------
-Floating Hearts
----------------------------*/
+btn.style.display="block";
 
-setInterval(()=>{
+}
 
-    const heart=document.createElement("div");
+}
 
-    heart.innerHTML="❤️";
+typeLetter();
 
-    heart.style.position="fixed";
+btn.onclick=function(){
 
-    heart.style.left=Math.random()*100+"vw";
+window.location.href="finale.html";
 
-    heart.style.bottom="-40px";
-
-    heart.style.fontSize=(18+Math.random()*20)+"px";
-
-    heart.style.transition="8s linear";
-
-    heart.style.pointerEvents="none";
-
-    document.body.appendChild(heart);
-
-    setTimeout(()=>{
-
-        heart.style.transform="translateY(-120vh)";
-
-        heart.style.opacity="0";
-
-    },50);
-
-    setTimeout(()=>{
-
-        heart.remove();
-
-    },8000);
-
-},600);
-
-/* --------------------------
-Button
----------------------------*/
-
-document.getElementById("finalBtn").addEventListener("click",()=>{
-
-    document.body.style.transition="1s";
-
-    document.body.style.opacity="0";
-
-    setTimeout(()=>{
-
-        window.location.href="finale.html";
-
-    },1000);
-
-});
+};
